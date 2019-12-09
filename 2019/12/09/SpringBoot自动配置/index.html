@@ -79,21 +79,21 @@
 
 
 
-<meta name="description" content="前言转载自“Java大后端”公众号 转自掘金 Springboot的自动配置原理是学习SpringBoot的核心。">
+<meta name="description" content="前言Springboot的自动配置原理是学习SpringBoot的核心。">
 <meta name="keywords" content="Springboot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringBoot自动配置">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;09&#x2F;SpringBoot%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE&#x2F;index.html">
 <meta property="og:site_name" content="夏至">
-<meta property="og:description" content="前言转载自“Java大后端”公众号 转自掘金 Springboot的自动配置原理是学习SpringBoot的核心。">
+<meta property="og:description" content="前言Springboot的自动配置原理是学习SpringBoot的核心。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https:&#x2F;&#x2F;mmbiz.qpic.cn&#x2F;mmbiz_png&#x2F;eQPyBffYbuduLbbV5e89ohtDIDx9pbI5ZgiaBQvVTLxOZOWvcic8Gn2JhdX1aOeI8c0wmANkTIpvibGrBACjR7abQ&#x2F;640?wx_fmt&#x3D;png&amp;wxfrom&#x3D;5&amp;wx_lazy&#x3D;1&amp;wx_co&#x3D;1">
+<meta property="og:image" content="https:&#x2F;&#x2F;user-gold-cdn.xitu.io&#x2F;2018&#x2F;8&#x2F;6&#x2F;1650d48b3fc268db?imageslim">
 <meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;09&#x2F;QwFkZT.md.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;user-gold-cdn.xitu.io&#x2F;2018&#x2F;8&#x2F;6&#x2F;1650e0e47481e59a?imageslim">
 <meta property="og:image" content="https:&#x2F;&#x2F;user-gold-cdn.xitu.io&#x2F;2018&#x2F;8&#x2F;6&#x2F;1650e64b3fe3fa0a?imageslim">
-<meta property="og:updated_time" content="2019-12-09T04:07:18.698Z">
+<meta property="og:updated_time" content="2019-12-09T04:12:34.536Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;mmbiz.qpic.cn&#x2F;mmbiz_png&#x2F;eQPyBffYbuduLbbV5e89ohtDIDx9pbI5ZgiaBQvVTLxOZOWvcic8Gn2JhdX1aOeI8c0wmANkTIpvibGrBACjR7abQ&#x2F;640?wx_fmt&#x3D;png&amp;wxfrom&#x3D;5&amp;wx_lazy&#x3D;1&amp;wx_co&#x3D;1">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;user-gold-cdn.xitu.io&#x2F;2018&#x2F;8&#x2F;6&#x2F;1650d48b3fc268db?imageslim">
 
 
 
@@ -306,6 +306,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -333,9 +355,7 @@
       
 
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><a href="https://mp.weixin.qq.com/s/jktQYHESBphywKuAcXSung" target="_blank" rel="noopener">转载自“Java大后端”公众号</a></p>
-<p><a href="https://juejin.im/post/5b679fbc5188251aad213110" target="_blank" rel="noopener">转自掘金</a></p>
-<p>Springboot的自动配置原理是学习SpringBoot的核心。</p>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Springboot的自动配置原理是学习SpringBoot的核心。</p>
 <a id="more"></a>
 
 <p><strong>Spring Boot、Spring MVC 和 Spring 有什么区别？</strong></p>
@@ -349,7 +369,7 @@
 <li>Spring MVC 是基于Spring的一个 MVC 框架;</li>
 <li>Spring Boot 是基于Spring4的条件注册的一套快速开发整合包。</li>
 </ul>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/eQPyBffYbuduLbbV5e89ohtDIDx9pbI5ZgiaBQvVTLxOZOWvcic8Gn2JhdX1aOeI8c0wmANkTIpvibGrBACjR7abQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/8/6/1650d48b3fc268db?imageslim" alt="img"></p>
 <h4 id="SpringBoot到底是怎么做到自动配置的？"><a href="#SpringBoot到底是怎么做到自动配置的？" class="headerlink" title="SpringBoot到底是怎么做到自动配置的？"></a>SpringBoot到底是怎么做到自动配置的？</h4><p>从代码里看项目SpringBoot的项目启动类只有一个注解@SpringBootApplication和一个run方法。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">        SpringApplication.run(Application<span class="class">.<span class="keyword">class</span>, <span class="title">args</span>)</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
 
@@ -412,6 +432,8 @@
 
 <p>因为maven依赖的传递性，我们只要依赖starter就可以依赖到所有需要自动配置的类，实现开箱即用的功能。也体现出Springboot简化了Spring框架带来的大量XML配置以及复杂的依赖管理，让开发人员可以更加关注业务逻辑的开发。</p>
 <h2 id="SpringBoot的启动结构图"><a href="#SpringBoot的启动结构图" class="headerlink" title="SpringBoot的启动结构图"></a>SpringBoot的启动结构图</h2><p><img src="https://user-gold-cdn.xitu.io/2018/8/6/1650e64b3fe3fa0a?imageslim" alt="img"></p>
+<p><a href="https://mp.weixin.qq.com/s/jktQYHESBphywKuAcXSung" target="_blank" rel="noopener">转载自“Java大后端”公众号</a></p>
+<p><a href="https://juejin.im/post/5b679fbc5188251aad213110" target="_blank" rel="noopener">转自掘金</a></p>
 
       
     </div>
@@ -542,7 +564,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
